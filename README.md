@@ -15,7 +15,7 @@ laravel test
 
 2.database目录下建立database.sqlite文件
 
-3. .env文件注释
+3..env文件注释
 
   ##DB_CONNECTION=mysql
   
@@ -29,7 +29,7 @@ laravel test
   
   ##DB_PASSWORD=root
     
-4. database.php配置文件 'default' => 'sqlite' 
+4.database.php配置文件 'default' => 'sqlite' 
 
-5. php artisan migrate 迁移
-   php artisan db:seed 填充
+5.php artisan migrate 迁移
+  php artisan db:seed 填充
