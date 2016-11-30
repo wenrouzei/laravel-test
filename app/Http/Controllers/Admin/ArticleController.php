@@ -9,34 +9,37 @@ use \App\Article;
 class ArticleController extends Controller
 {
     //
-    public function index(){
-    	return view('admin/article/index', ['articles' => Article::orderBy('id', 'DESC')->paginate(2)]);
+    public function index(Request $request){
+        // var_dump(\Auth::check());
+        // var_dump($request->user()->id);
+        // dd(Article::orderBy('id', 'DESC')->get());
+        return view('admin/article/index', ['articles' => Article::orderBy('id', 'DESC')->paginate(2)]);
     }
 
     public function create(){
-    	return view('admin/article/create');
+        return view('admin/article/create');
     }
 
     public function store(Request $request){
-    	$this->validate($request, [
-    		'title'	=> 'required|unique:articles|max:255',
-    		'body'	=> 'required',
-    	]);
+        $this->validate($request, [
+            'title' => 'required|unique:articles|max:255',
+            'body'  => 'required',
+        ]);
 
-    	$article = new Article;
-    	$article->title = $request->get('title');
-    	$article->body = $request->get('body');
-    	$article->user_id = $request->user()->id;
+        $article = new Article;
+        $article->title = $request->get('title');
+        $article->body = $request->get('body');
+        $article->user_id = $request->user()->id;
 
-    	if($article->save()){
-    		return redirect('admin/article')->withErrors('添加成功');
-    	}else{
-    		return redirect()->back()->withInput()->withErrors('保存失败！');
-    	}
+        if($article->save()){
+            return redirect('admin/article')->withErrors('添加成功');
+        }else{
+            return redirect()->back()->withInput()->withErrors('保存失败！');
+        }
     }
 
     public function edit($id){
-    	return view('admin.article.edit', ['article' => Article::find($id)]);
+    	return view('admin.article.edit', ['article' => Article::findOrFail($id)]);
     }
 
     public function update($id, Request $request){

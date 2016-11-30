@@ -10,6 +10,11 @@ class HelloWorldController extends Controller
 {
     //
     public function index(){
+        // var_dump(config('auth.defaults'));
+        var_dump(getenv('APP_KEY'));//获取全局环境变量
+        echo "<br>";
+        echo "<br>";
+        var_dump($_ENV);//全局环境变量 .env文件定义
     	// echo "<pre>";
     	// $articles = \App\Article::find(2);
     	// var_dump($articles);
