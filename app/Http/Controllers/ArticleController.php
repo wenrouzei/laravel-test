@@ -36,7 +36,7 @@ class ArticleController extends Controller
     	// var_dump(base_path('xx'));
     	// var_dump(app_path('xx'));
     	// var_dump(resource_path('xx'));
-
+        // \Debugbar::disable();
     	return view('article',['articles'=>Article::orderBy('id', 'DESC')->paginate(5)]);
     }
 

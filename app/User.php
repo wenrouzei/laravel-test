@@ -10,7 +10,7 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are mass assignable. 允许使用create()和update()批量创建和更新的字段
      *
      * @var array
      */

@@ -19,6 +19,7 @@ class HelloWorldController extends Controller
     	// $articles = \App\Article::find(2);
     	// var_dump($articles);
     	$articles = Article::where('id', '>', 2)->where('id', '<', 20)->orderBy('updated_at', 'desc')->get();
+        // var_dump(\App\Article::all());
 
     	// foreach ($articles as $article) {
 

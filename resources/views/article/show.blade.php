@@ -44,19 +44,19 @@
                     <input type="hidden" name="article_id" value="{{ $article->id }}">
                     <div class="form-group">
                         <label>Nickname</label>
-                        <input type="text" name="nickname" class="form-control" style="width: 300px;" required="required">
+                        <input type="text" name="nickname" class="form-control" style="width: 300px;" required="required" value="{{ old('nickname') }}">
                     </div>
                     <div class="form-group">
                         <label>Email address</label>
-                        <input type="email" name="email" class="form-control" style="width: 300px;">
+                        <input type="email" name="email" class="form-control" style="width: 300px;" value="{{ old('email') }}">
                     </div>
                     <div class="form-group">
                         <label>Home page</label>
-                        <input type="text" name="website" class="form-control" style="width: 300px;">
+                        <input type="text" name="website" class="form-control" style="width: 300px;" value="{{ old('website') }}">
                     </div>
                     <div class="form-group">
                         <label>Content</label>
-                        <textarea name="content" id="newFormContent" class="form-control" rows="10" required="required"></textarea>
+                        <textarea name="content" id="newFormContent" class="form-control" rows="10" required="required">{{ old('content') }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-lg btn-success col-lg-12">Submit</button>
                 </form>
