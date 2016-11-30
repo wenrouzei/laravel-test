@@ -35,5 +35,7 @@ laravel test
   php artisan db:seed 填充
   
 6.操作sqlite数据库，命令行进入database目录，输入sqlite3 dababase.sqlite，从而开打数据库进行操作
-  .table 列出所有表
-  .database 列出所有数据库
+
+ .table 列出所有表
+  
+ .database 列出所有数据库
