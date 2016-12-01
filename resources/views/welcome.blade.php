@@ -85,6 +85,12 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                <div class="panel-footer">
+                    {{-- 如果session中存在status这个键，那么读取它的值 --}}
+                    @if (Session::has('status'))
+                        <h3>{{ Session::get('status') }}</h3>
+                    @endif
+                </div>
             </div>
         </div>
     </body>
