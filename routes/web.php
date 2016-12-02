@@ -21,6 +21,11 @@ Route::get('/cache', function () {
     return Cache::get('Cathe');
 });
 
+Route::get('lee',function(){
+	//return config('lee.key1');//返回配置数组的某个值
+	return config('lee');//返回整个配置数组
+});
+
 Route::get('api/users/{user}', function (App\User $user) {
 	// var_dump(Route::current());
 	//return config('lee.key2');//测试获取自建配置lee.php文件里返回数组键名key2的值
