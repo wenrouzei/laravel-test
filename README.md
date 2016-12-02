@@ -45,15 +45,15 @@ laravel test
 
   自定义函数 composer.json 中 autoload 部分里的 files 字段加入该文件
   
- {
-    ...
+	{
+	    ...
 
-    "autoload": {
-        "files": [
-            "app/helpers.php"
-        ]
-    }
-    ...
+	    "autoload": {
+		"files": [
+		    "app/helpers.php"
+		]
+	    }
+	    ...
 	}
 
 	然后运行 composer dump-autoload
@@ -75,3 +75,20 @@ laravel test
  
  gregwar/captcha
  
+#自建config目录下配置文件获取
+
+###demo 
+
+config/lee.php
+
+	<?php
+	/**
+	 * 自建测试config配置，无需额外设置可以在任何地方直接使用全局配置帮助函数config调用，调用方法为 config('文件名.返回一维数组的键名') as config('lee.key1')
+	 */
+
+	return [
+		'key1' => 'lee test config 1',
+		'key2' => 'lee test config 2',
+		'key3' => 'lee test config 3',
+		'key4' => 'lee test config 4',
+	];
