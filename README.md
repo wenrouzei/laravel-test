@@ -71,6 +71,8 @@ laravel test
  
  barryvdh/laravel-debugbar
  
+ laravel-ide-helper
+ 
  guzzlehttp/guzzle
  
  gregwar/captcha
