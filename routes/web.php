@@ -17,11 +17,13 @@
 use Illuminate\Support\Facades\Cache;
 
 Route::get('/cache', function () {
+	//return config('lee.key1');//测试获取自建配置lee.php文件里返回数组键名key1的值
     return Cache::get('Cathe');
 });
 
 Route::get('api/users/{user}', function (App\User $user) {
 	// var_dump(Route::current());
+	//return config('lee.key2');//测试获取自建配置lee.php文件里返回数组键名key2的值
     return $user->email;
 });
 

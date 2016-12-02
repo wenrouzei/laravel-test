@@ -37,6 +37,9 @@ class ArticleController extends Controller
     	// var_dump(app_path('xx'));
     	// var_dump(resource_path('xx'));
         // \Debugbar::disable();
+
+        //return config('lee.key2');//测试获取自建配置lee.php文件里返回数组键名key2的值
+
     	return view('article',['articles'=>Article::orderBy('id', 'DESC')->paginate(5)]);
     }
 
