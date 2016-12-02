@@ -68,7 +68,10 @@ laravel test
  
  
  #扩展包
+ 
  barryvdh/laravel-debugbar
+ 
  guzzlehttp/guzzle
+ 
  gregwar/captcha
  
