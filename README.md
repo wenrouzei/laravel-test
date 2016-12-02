@@ -41,7 +41,7 @@ laravel test
   
  .database 列出所有数据库
  
-#自定义函数库
+#添加自定义函数库
 
   自定义函数 composer.json 中 autoload 部分里的 files 字段加入该文件
   
@@ -58,10 +58,17 @@ laravel test
 
 	然后运行 composer dump-autoload
  
-#自定义类
+#添加自定义类
 
  放在app目录下，可建多层目录，按psr-4规范编写，composer已自动加载 （测试可无需运行 composer dump-autoload）
  
  demo使用
  
  \App\Libraires\TestMe()
+ 
+ 
+ #扩展包
+ barryvdh/laravel-debugbar
+ guzzlehttp/guzzle
+ gregwar/captcha
+ 
