@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-use Illuminate\Support\Facades\Cache;
+// use Illuminate\Support\Facades\Cache;
 
 Route::get('/cache', function () {
 	//return config('lee.key1');//测试获取自建配置lee.php文件里返回数组键名key1的值
@@ -32,7 +32,10 @@ Route::get('api/users/{user}', function (App\User $user) {
     return $user->email;
 });
 
-Route::get('HelloWorld', 'HelloWorldController@index');
+//Route::get('HelloWorld', 'HelloWorldController@index');
+Route::get('HelloWorld', ['uses'=>'HelloWorldController@index']);//通过uses建立数组等价上面路由
+Route::get('HelloWorld', ['uses'=>'HelloWorldController@index', 'as'=>'helpMe']);//通过uses建立数组等价上面路由 加多路由别名 给route函数使用 route("helpMe");
+
 Auth::routes();
 
 Route::get('welcome', function(){
@@ -41,8 +44,18 @@ Route::get('welcome', function(){
 
 Route::get('home', 'HomeController@index');
 
+######################前端文章测试操作########################################
 Route::get('/', 'ArticleController@index');
-Route::get('article/{id}', 'ArticleController@show')->name('articleId');
+Route::get('article/{id}', 'ArticleController@show')->name('articleId')->where('id','[0-9]+');//name方法也可设置路由别名
+Route::get('articleDbTest', function() {
+	//测试路由的闭合函数直接操作数据库 TODO测试DB可无需载入命名空间门面？
+    $article = DB::select("select * from articles where id<?",[4]);
+    dd($article);
+});
+
+Route::get('article/query', 'ArticleController@query')->name('articlequery');// name方法也可设置路由别名
+Route::get('article/orm', 'ArticleController@orm')->name('articlequery');// name方法也可设置路由别名
+##############################################################################
 
 Route::post('comment', 'CommentController@store');
 
@@ -62,3 +75,5 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'adm
 // Route::get('profile', function() {
 //     // Only authenticated users may enter...
 // })->middleware('auth.basic');
+
+include "test.php";

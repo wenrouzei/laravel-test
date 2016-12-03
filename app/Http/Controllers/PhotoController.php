@@ -11,9 +11,10 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         //
+        return route('pt',$id)."-----------------------get-id-".$id;
     }
 
     /**
