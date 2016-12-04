@@ -29,6 +29,10 @@ class HelloWorldController extends Controller
 
         //return Article::testModel();
 
+        //return url('/');
+        //return action('ArticleController@query');
+        //return route('articleorm');
+
     	//return route("helpMe");
         // throw new \Exception("Error Processing Request", 1);
         $title = 'compact — 建立一个数组，包括变量名和它们的值 传值模板测试';

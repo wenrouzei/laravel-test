@@ -54,6 +54,11 @@ return [
             'visibility' => 'public',
         ],
 
+        'upload' => [
+            'driver' => 'local',
+            'root' => public_path('upload'),//文件上传路径设置
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => 'your-key',

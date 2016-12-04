@@ -7,6 +7,8 @@ use App\Article;
 use App\Model\AdminRole;
 use Illuminate\Support\Facades\Hash;//hash门面
 use Illuminate\Support\Facades\DB;//db门面
+use Illuminate\Support\Facades\Storage;//Storage门面
+use Illuminate\Support\Facades\Cache;//Cache门面
 
 
 class ArticleController extends Controller
@@ -230,5 +232,50 @@ class ArticleController extends Controller
 
 /*        $num = Article::where("id","=",15)->delete();
         var_dump($num);*/
+    }
+
+
+    public function upload(Request $request){
+        if($request->isMethod('POST')){
+            //var_dump($_FILES);exit;
+            $file = $request->file('file');
+            //dd($file);
+
+            //文件是否上传成功
+            if($file->isValid()){
+                //原文件名
+                $originalName = $file->getClientOriginalName();
+                //扩展名
+                $ext = $file->getClientOriginalExtension();
+                //mimeType
+                $type = $file->getClientMimeType();
+                //临时绝对路径
+                $realPath = $file->getRealPath();
+
+                //var_dump($originalName, $ext, $type, $realPath);exit;
+
+                $fileName = date('Y-m-d-H-i-s').'-'.uniqid().'.'.$ext;
+                //$bool = Storage::disk("public")->put($fileName, file_get_contents($realPath));
+                $bool = Storage::disk("upload")->put($fileName, file_get_contents($realPath));
+                var_dump($bool);
+            }
+        }
+        return view('article.upload');
+    }
+
+    public function cache(){
+//        Cache::put('key1', 'value1', 10);
+
+        $bool = Cache::add('key2', 'value2', 10);
+
+        Cache::forever('key3', 'value3');
+        var_dump($bool, Cache::get('key1', 'default1'), Cache::get('key2', 'default2'), Cache::get('key3', 'default3'));
+        echo "<pre>";
+        if(Cache::has('key1')){
+            var_dump(Cache::pull('key1'));//pull取出缓存并删除
+        }
+
+        $bool = Cache::forget('key2');
+        var_dump($bool, Cache::get('key2', 'default'));
     }
 }
