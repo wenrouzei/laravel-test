@@ -99,4 +99,4 @@ config/lee.php
 
 #查看composer当前镜像地址
 
-	composer config g repo.packagist
+	composer config -g repo.packagist
