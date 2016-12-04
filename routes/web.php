@@ -57,6 +57,7 @@ Route::get('article/query', 'ArticleController@query')->name('articlequery');// 
 Route::get('article/orm', 'ArticleController@orm')->name('articleorm');// name方法也可设置路由别名
 Route::any('article/upload', 'ArticleController@upload')->name('articleupload');// name方法也可设置路由别名
 Route::get('article/cache', 'ArticleController@cache')->name('articlecache');// name方法也可设置路由别名
+Route::get('article/queue', 'ArticleController@queue')->name('articlequeue');// name方法也可设置路由别名
 ##############################################################################
 
 Route::post('comment', 'CommentController@store');

@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;//hash门面
 use Illuminate\Support\Facades\DB;//db门面
 use Illuminate\Support\Facades\Storage;//Storage门面
 use Illuminate\Support\Facades\Cache;//Cache门面
+use Illuminate\Support\Facades\Log;//Log门面
+use Illuminate\Support\Facades\Mail;//Mail门面
+use App\Jobs\SendEmail;
 
 
 class ArticleController extends Controller
@@ -234,7 +237,11 @@ class ArticleController extends Controller
         var_dump($num);*/
     }
 
-
+    /**
+     * 文件上传
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
     public function upload(Request $request){
         if($request->isMethod('POST')){
             //var_dump($_FILES);exit;
@@ -264,7 +271,39 @@ class ArticleController extends Controller
     }
 
     public function cache(){
-//        Cache::put('key1', 'value1', 10);
+
+        #################################邮件
+        // Mail::raw('测试邮件内容', function ($message) {
+        //     $message->from('837597588@qq.com', 'lee');
+        //     $message->sender('837597588@qq.com', 'lee');
+
+        //     $message->subject('邮件主题');
+
+        //     $message->to('420716854@qq.com', 'lee');
+        // });
+
+        Mail::send('welcome', ['test'=>'test me'], function ($message) {
+            $message->from('837597588@qq.com', 'lee');
+            $message->sender('837597588@qq.com', 'lee');
+
+            $message->subject('邮件主题');
+            $message->to('420716854@qq.com', 'lee');
+
+        });
+
+        #############################日志
+        Log::info('这是 info 级别的日志');
+        Log::warning('这是 warning 级别的日志');
+        Log::error('这是一个数组',['name'=>'dd','age'=>18]);
+
+        #############################http异常抛出
+        //abort(404);
+        abort(500);
+        abort(503);
+
+
+        #############################cache缓存
+        // Cache::put('key1', 'value1', 10);
 
         $bool = Cache::add('key2', 'value2', 10);
 
@@ -277,5 +316,13 @@ class ArticleController extends Controller
 
         $bool = Cache::forget('key2');
         var_dump($bool, Cache::get('key2', 'default'));
+    }
+
+    /**
+     * 邮件队列测试
+     * @return [type] [description]
+     */
+    public function queue(){
+        dispatch(new SendEmail('420716854@qq.com'));
     }
 }
