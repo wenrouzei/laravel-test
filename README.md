@@ -96,3 +96,7 @@ config/lee.php
 		'key3' => 'lee test config 3',
 		'key4' => 'lee test config 4',
 	];
+
+#查看composer当前镜像地址
+
+	composer config g repo.packagist
