@@ -54,7 +54,7 @@ Route::get('articleDbTest', function() {
 });
 
 Route::get('article/query', 'ArticleController@query')->name('articlequery');// name方法也可设置路由别名
-Route::get('article/orm', 'ArticleController@orm')->name('articlequery');// name方法也可设置路由别名
+Route::get('article/orm', 'ArticleController@orm')->name('articleorm');// name方法也可设置路由别名
 ##############################################################################
 
 Route::post('comment', 'CommentController@store');

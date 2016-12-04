@@ -201,11 +201,34 @@ class ArticleController extends Controller
         // $article = Article::firstOrCreate(
         //     ['title' => '测试模型create方法新建数据111', 'user_id'=>333]
         // );
-        $article = Article::firstOrNew(
+/*        $article = Article::firstOrNew(
             ['title' => '测试模型create方法新建数据2222', 'user_id'=>2222]
         );
         // dd($article);
         $bool = $article->save();
-        dd($bool);
+        dd($bool);*/
+
+        ########################更新
+        //通过模型更新
+/*        $article = Article::find(12);
+        $article->title = 'update title';
+        $bool = $article->save();
+        var_dump($bool);
+
+        $num = Article::where('id','<',15)->where("id",">",12)->update(['title'=>'update title 2']);
+        var_dump($num);
+*/
+        ########################删除
+        //通过模型删除
+/*        $article = Article::find(12);
+        $bool = $article->delete();
+        var_dump($bool);*/
+
+        //通过主键删除
+/*        $num = Article::destroy(13,14);
+        var_dump($num);*/
+
+/*        $num = Article::where("id","=",15)->delete();
+        var_dump($num);*/
     }
 }

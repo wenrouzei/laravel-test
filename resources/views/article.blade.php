@@ -1,6 +1,6 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,6 +28,10 @@
             </div>
             <div class="body">
                 <p>{{ $article->body }}</p>
+                <p>@{{ $article->created_at }}</p>
+                <p><a href="{{ url('article/query') }}">url()</a></p>
+                <p><a href="{{ action('ArticleController@query') }}">action()</a></p>
+                <p><a href="{{ route('articlequery') }}">route()</a></p>
             </div>
         </li>
         @endforeach
@@ -37,5 +41,5 @@
     </ul>
 </div>
 
-</body>  
-</html>  
+</body>
+</html>
