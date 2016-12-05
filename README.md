@@ -60,7 +60,7 @@ laravel test
  
 #添加自定义类
 
- 放在app目录下，可建多层目录，按psr-4规范编写，composer已自动加载 （测试可无需运行 composer dump-autoload）
+ 放在app目录下，可建多层目录，按psr-4规范编写，composer已自动加载 （测试可无需运行 composer dump-autoload, 但需要运行 composer install ?）
  
  demo使用
  
