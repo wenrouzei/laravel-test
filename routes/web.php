@@ -58,6 +58,17 @@ Route::get('article/orm', 'ArticleController@orm')->name('articleorm');// name�
 Route::any('article/upload', 'ArticleController@upload')->name('articleupload');// name方法也可设置路由别名
 Route::get('article/cache', 'ArticleController@cache')->name('articlecache');// name方法也可设置路由别名
 Route::get('article/queue', 'ArticleController@queue')->name('articlequeue');// name方法也可设置路由别名
+
+//test request请求
+Route::get('article/request', 'ArticleController@request')->name('articlerequest');// name方法也可设置路由别名
+
+//test session
+Route::get('article/session', 'ArticleController@session')->name('articlesession');// name方法也可设置路由别名
+
+//test response
+Route::get('article/response', 'ArticleController@response')->name('articleresponse');// name方法也可设置路由别名
+
+
 ##############################################################################
 
 Route::post('comment', 'CommentController@store');
@@ -67,7 +78,7 @@ Route::get('getCaptcha', 'CaptchaController@getCaptcha');
 
 Route::get('now', function() {
     return date('Y-m-d H:i:s');
-})->middleware('ChackAge');
+})->middleware('CheckAge');
 
 Route::group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/', 'HomeController@index');

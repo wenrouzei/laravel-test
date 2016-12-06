@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Cache;//Cache门面
 use Illuminate\Support\Facades\Log;//Log门面
 use Illuminate\Support\Facades\Mail;//Mail门面
 use App\Jobs\SendEmail;
+use Illuminate\Support\Facades\Session;//Session门面
+
 
 
 class ArticleController extends Controller
@@ -324,5 +326,85 @@ class ArticleController extends Controller
      */
     public function queue(){
         dispatch(new SendEmail('420716854@qq.com'));
+    }
+
+    public function request(Request $request){
+        Session::flash('key100','闪存测试');//第一次请求获取存在,测试要把虾米那dd输出注释或删除
+/*        dd(
+            $request->input('name'),//获取请求的单个参数
+            $request->input('dd', '未知'),//获取请求的单个参数, 可设置不存在时默认值
+            $request->has('dd'),//判断是否存在某参数
+            $request->all(),//获取请求的所有参数
+            $request->method(),//获取请求的方式
+            $request->isMethod('GET'),//判断是否get方式请求
+            $request->ajax(),//判断是否ajax请求
+            $request->is('article/*'),//判断是否满足某规则的路由请求
+            $request->url()//获取请求url
+
+        );*/
+    }
+
+    public function session(Request $request){
+        //1 http request类session方法
+        $request->session()->put('key1','value1');
+        var_dump($request->session()->get('key1'));
+
+        //2 session函数
+        session()->put('key2', 'value2');
+        var_dump(session()->get('key2'));
+
+        //3 session类|门面
+        Session::put('key3', 'value3');
+        var_dump(
+            Session::get('key3'),
+            Session::get('key4','default')//不存在设置默认值
+        );
+
+
+        Session::put(['key5'=>'value5']);//数组方式
+        var_dump(Session::get('key5'));
+
+        Session::put(['key6'=>[1,2,3]]);//存储数组
+        Session::push('key6',5);//往数组中添加数据
+        Session::push('key6',6);//往数组中添加数据
+        var_dump(Session::get('key6','default'));
+
+        var_dump(
+            Session::pull('key6'),//取出数据并删除
+            Session::get('key6')
+            );
+
+        var_dump(
+            Session::all(),//取出所有数据
+            Session::get('key100')//测试闪存 测试要把虾米那dd输出注释或删除
+        );
+        dd(
+            Session::has('key111'),//判断是否存在
+            Session::all(),//取出所有数据
+            Session::forget('key1'),//删除指定key的值
+            Session::all(),//取出所有数据
+            Session::flush(),//清空session中的所有值
+            Session::all()//取出所有数据
+        );
+    }
+
+    public function response(){
+/*        $data = [
+            'a'=>1,
+            'b'=>2,
+        ];
+
+        return response()->json($data);//返回json数据*/
+
+        //重定向某个路由
+        //return redirect('article/session');
+
+        //return redirect('article/session')->with('message','闪存数据');//重定向并传数据
+
+        //return redirect()->action('ArticleController@request')->with('message','闪存数据');//重定某个控制器方法向并传数据
+
+        //return redirect()->route('articlequery')->with('message','闪存数据');//通过路由别名重定向并传数据
+
+        return redirect()->back()->with('message','闪存数据');//返回上一级
     }
 }
