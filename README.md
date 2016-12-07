@@ -100,3 +100,7 @@ config/lee.php
 #查看composer当前镜像地址
 
 	composer config -g repo.packagist
+	
+#创建RESTFul风格控制器 需要加上参数--resource
+
+	php artisan make:controller PhotoController --resource
