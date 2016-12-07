@@ -339,8 +339,9 @@ class ArticleController extends Controller
             $request->isMethod('GET'),//判断是否get方式请求
             $request->ajax(),//判断是否ajax请求
             $request->is('article/*'),//判断是否满足某规则的路由请求
-            $request->url()//获取请求url
-
+            $request->url(),//完整的 URL 不包含查询字符串
+            $request->fullUrl(),//完整的 URL 包含查询字符串
+            $request->path()//返回请求的路径信息
         );*/
     }
 
