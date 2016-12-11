@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;//Log门面
 use Illuminate\Support\Facades\Mail;//Mail门面
 use App\Jobs\SendEmail;
 use Illuminate\Support\Facades\Session;//Session门面
+use Carbon\Carbon;
 
 
 
@@ -68,9 +69,16 @@ class ArticleController extends Controller
         // var_dump($num);
         ###############################################################################################################
 
+        //Carbon类库测试
+        //return Carbon::now();
+        //printf("Now: %s", Carbon::now());
 
+        //返回数组测试，直接输出json数据
+        //return Article::orderBy('id', 'DESC')->paginate(5);
 
-    	return view('article',['articles'=>Article::orderBy('id', 'DESC')->paginate(5)]);
+        //return view('article',['articles'=>Article::orderBy('id', 'DESC')->paginate(5)]);
+        return view('article',['articles'=>Article::oldest('id')->paginate(5)]);//oldest简化升序排序
+    	return view('article',['articles'=>Article::latest('id')->paginate(5)]);//latest简化降序排序
     }
 
     public function show($id){

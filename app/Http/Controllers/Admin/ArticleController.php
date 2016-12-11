@@ -13,7 +13,9 @@ class ArticleController extends Controller
         // var_dump(\Auth::check());
         // var_dump($request->user()->id);
         // dd(Article::orderBy('id', 'DESC')->get());
-        return view('admin/article/index', ['articles' => Article::orderBy('id', 'DESC')->paginate(2)]);
+        // return view('admin/article/index', ['articles' => Article::orderBy('id', 'DESC')->paginate(2)]);
+        return view('admin/article/index', ['articles' => Article::latest('id')->paginate(2)]);//latest简化模型降序排序
+        return view('admin/article/index', ['articles' => Article::oldest('id')->paginate(2)]);//oldest简化模型升序排序
     }
 
     public function create(){
@@ -22,7 +24,7 @@ class ArticleController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
-            'title' => 'required|unique:articles|max:255',
+            'title' => 'required|unique:articles|min:3|max:255',
             'body'  => 'required',
         ]);
 

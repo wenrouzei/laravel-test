@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">  
+<div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">文章管理</div>
                 <div class="panel-body">
-                    @if (count($errors) > 0)
+                    @if ($errors->any())
                         <div class="alert alert-danger">
                             {!! implode('<br>', $errors->all()) !!}
                         </div>
@@ -26,19 +26,20 @@
                             </div>
                         </div>
                         <a href="{{ url('admin/article/'.$article->id.'/edit') }}" class="btn btn-success">编辑</a>
-                        <form action="{{ url('admin/article/'.$article->id) }}" method="POST" style="display: inline;">
+                        <form action="{{ url('admin/article', $article->id) }}" method="POST" style="display: inline;">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger">删除</button>
                         </form>
                     @endforeach
-    
+
                 </div>
                 <div class="panel-foot">
                     {{ $articles->links()  }}
+                    {{-- {{ $articles->render()  }} --}}
                 </div>
             </div>
         </div>
     </div>
-</div>  
+</div>
 @endsection

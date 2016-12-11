@@ -1,6 +1,6 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +31,7 @@
 
         <div id="comments" style="margin-top: 50px;">
 
-            @if (count($errors) > 0)
+            @if ($errors->any())
                 <div class="alert alert-danger">
                     <strong>操作失败</strong> 输入不符合要求<br><br>
                     {!! implode('<br>', $errors->all()) !!}
@@ -100,5 +100,5 @@
 
     </div>
 
-</body>  
+</body>
 </html>
