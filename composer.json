@@ -10,7 +10,8 @@
         "gregwar/captcha": "1.*",
         "guzzlehttp/guzzle": "6.2",
         "barryvdh/laravel-debugbar": "^2.3",
-        "barryvdh/laravel-ide-helper": "^2.2"
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "overtrue/laravel-ueditor": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

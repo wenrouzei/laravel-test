@@ -14,16 +14,27 @@
                             {!! implode('<br>', $errors->all()) !!}
                         </div>
                     @endif
+                    
+                    @include('vendor.ueditor.assets')
 
                     <form action="{{ url('admin/article') }}" method="POST">
                         {!! csrf_field() !!}
                         <input type="text" name="title" class="form-control" required="required" placeholder="请输入标题">
                         <br>
                         <textarea name="body" rows="10" class="form-control" required="required" placeholder="请输入内容"></textarea>
+                        <!-- 编辑器容器 -->
+                        <script id="container" name="content" type="text/plain"></script>
                         <br>
                         <button class="btn btn-lg btn-info">新增文章</button>
                     </form>
-
+                    
+                    <!-- 实例化编辑器 -->
+                    <script type="text/javascript">
+                        var ue = UE.getEditor('container');
+                        ue.ready(function() {
+                            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+                        });
+                    </script>
                 </div>
             </div>
         </div>
