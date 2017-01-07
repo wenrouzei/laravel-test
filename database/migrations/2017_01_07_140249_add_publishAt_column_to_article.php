@@ -14,7 +14,7 @@ class AddPublishAtColumnToArticle extends Migration
     public function up()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->timestamp('pulish_at')->nullable();
+            $table->timestamp('publish_at')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddPublishAtColumnToArticle extends Migration
     public function down()
     {
         Schema::table('articles', function (Blueprint $table) {
-            $table->timestamp('publish_at')->nullable();
+            $table->dropColumn('publish_at');
         });
     }
 }
