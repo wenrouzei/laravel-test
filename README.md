@@ -112,3 +112,7 @@ config/lee.php
 添加字段到类里面后执行
 
 	php artisan migrate
+	
+rename重命名表字段操作需要安装doctrine/dbal包
+	
+	composer require doctrine/dbal
