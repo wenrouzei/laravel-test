@@ -104,3 +104,11 @@ config/lee.php
 #创建RESTFul风格控制器 需要加上参数--resource
 
 	php artisan make:controller PhotoController --resource
+
+#后期添加字段
+
+	php artisan make:migration add_publishAt_to_column_to_article --table=articles
+
+添加字段到类里面后执行
+
+	php artisan migrate
