@@ -44,6 +44,12 @@ Route::get('welcome', function(){
 
 Route::get('home', 'HomeController@index');
 
+/**
+ * 测试生成动态数据库连接
+ */
+Route::get('pdo', 'PdoController@index');
+
+
 ######################前端文章测试操作########################################
 Route::get('/', 'ArticleController@index');
 Route::get('article/{id}', 'ArticleController@show')->name('articleId')->where('id','[0-9]+');//name方法也可设置路由别名
