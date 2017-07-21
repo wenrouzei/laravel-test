@@ -116,3 +116,14 @@ config/lee.php
 rename重命名表字段操作需要安装doctrine/dbal包
 	
 	composer require doctrine/dbal
+
+
+动态生成数据库连接
+
+`use Illuminate\Database\Connection;`
+
+`$dsn = "mysql:host=localhost;dbname=blog";`
+`$db = new \PDO($dsn, 'root', 'root');`
+`$con = new Connection($db);`
+`$r = $con->select("select * from users limit 10");`
+`dd($r);`
